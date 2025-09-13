@@ -5,6 +5,19 @@ import thailandHero from "@/assets/thailand-hero.jpg";
 import hungryHubLogo from "@/assets/hungryhub-logo.jpg";
 
 export const ChallengeHero = () => {
+  const scrollToLeaderboard = () => {
+    document.getElementById('leaderboard')?.scrollIntoView({ 
+      behavior: 'smooth',
+      block: 'start'
+    });
+  };
+
+  const scrollToRules = () => {
+    document.getElementById('rules')?.scrollIntoView({ 
+      behavior: 'smooth',
+      block: 'start'
+    });
+  };
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
@@ -19,11 +32,11 @@ export const ChallengeHero = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 py-20">
+      <div className="relative z-10 container mx-auto px-4 py-20 animate-fade-in">
         <div className="max-w-4xl mx-auto text-center">
           {/* Brand Header */}
-          <div className="flex items-center justify-center gap-4 mb-8">
-            <div className="w-16 h-16 rounded-2xl overflow-hidden shadow-thailand">
+          <div className="flex items-center justify-center gap-4 mb-8 animate-slide-up">
+            <div className="w-16 h-16 rounded-2xl overflow-hidden shadow-thailand hover:scale-105 transition-transform duration-300">
               <img 
                 src={hungryHubLogo} 
                 alt="HungryHub Singapore" 
@@ -37,8 +50,8 @@ export const ChallengeHero = () => {
           </div>
 
           {/* Main Title */}
-          <div className="mb-8">
-            <Badge variant="outline" className="mb-4 border-primary text-primary">
+          <div className="mb-8 animate-bounce-in">
+            <Badge variant="outline" className="mb-4 border-primary text-primary animate-glow-pulse">
               <Users className="w-4 h-4 mr-2" />
               Invite Only Challenge
             </Badge>
@@ -57,32 +70,32 @@ export const ChallengeHero = () => {
 
           {/* Challenge Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-            <div className="text-center">
-              <div className="mx-auto w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-3">
+            <div className="text-center animate-slide-up" style={{ animationDelay: '0.2s' }}>
+              <div className="mx-auto w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-3 hover:scale-110 transition-transform duration-300">
                 <Trophy className="w-6 h-6 text-primary" />
               </div>
               <div className="text-2xl font-bold gradient-text">1</div>
               <div className="text-sm text-muted-foreground">Winner</div>
             </div>
             
-            <div className="text-center">
-              <div className="mx-auto w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mb-3">
+            <div className="text-center animate-slide-up" style={{ animationDelay: '0.4s' }}>
+              <div className="mx-auto w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mb-3 hover:scale-110 transition-transform duration-300">
                 <Calendar className="w-6 h-6 text-accent" />
               </div>
               <div className="text-2xl font-bold gradient-thailand">5</div>
               <div className="text-sm text-muted-foreground">Days in Thailand</div>
             </div>
             
-            <div className="text-center">
-              <div className="mx-auto w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center mb-3">
+            <div className="text-center animate-slide-up" style={{ animationDelay: '0.6s' }}>
+              <div className="mx-auto w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center mb-3 hover:scale-110 transition-transform duration-300">
                 <Camera className="w-6 h-6 text-secondary" />
               </div>
               <div className="text-2xl font-bold text-secondary">∞</div>
               <div className="text-sm text-muted-foreground">Content Creation</div>
             </div>
             
-            <div className="text-center">
-              <div className="mx-auto w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-3">
+            <div className="text-center animate-slide-up" style={{ animationDelay: '0.8s' }}>
+              <div className="mx-auto w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-3 hover:scale-110 transition-transform duration-300">
                 <MapPin className="w-6 h-6 text-primary" />
               </div>
               <div className="text-2xl font-bold gradient-text">🇹🇭</div>
@@ -91,20 +104,30 @@ export const ChallengeHero = () => {
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-            <Button size="lg" variant="hero" className="text-lg px-8 py-4">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 animate-fade-in" style={{ animationDelay: '1s' }}>
+            <Button 
+              size="lg" 
+              variant="hero" 
+              className="text-lg px-8 py-4 hover:scale-105 transition-all duration-300"
+              onClick={scrollToLeaderboard}
+            >
               <Plane className="w-5 h-5 mr-2" />
               View Leaderboard
             </Button>
-            <Button size="lg" variant="challenge" className="text-lg px-8 py-4">
+            <Button 
+              size="lg" 
+              variant="challenge" 
+              className="text-lg px-8 py-4 hover:scale-105 transition-all duration-300"
+              onClick={scrollToRules}
+            >
               <Trophy className="w-5 h-5 mr-2" />
               Challenge Rules
             </Button>
           </div>
 
           {/* Prize Highlight */}
-          <div className="max-w-2xl mx-auto">
-            <div className="p-6 rounded-2xl bg-gradient-thailand border border-accent/40 shadow-thailand">
+          <div className="max-w-2xl mx-auto animate-bounce-in" style={{ animationDelay: '1.2s' }}>
+            <div className="p-6 rounded-2xl bg-gradient-thailand border border-accent/40 shadow-thailand hover:shadow-xl transition-all duration-500">
               <h3 className="text-xl font-bold text-accent-foreground mb-2">
                 🏆 Grand Prize Worth $3,000 SGD
               </h3>
@@ -115,7 +138,7 @@ export const ChallengeHero = () => {
           </div>
 
           {/* Competition Status */}
-          <div className="mt-8 flex items-center justify-center gap-2">
+          <div className="mt-8 flex items-center justify-center gap-2 animate-fade-in" style={{ animationDelay: '1.4s' }}>
             <div className="w-3 h-3 rounded-full bg-primary animate-glow-pulse" />
             <span className="text-sm font-medium text-primary">Challenge Live Now</span>
           </div>

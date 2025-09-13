@@ -99,13 +99,13 @@ const formatNumber = (num: number) => {
 
 export const Leaderboard = () => {
   return (
-    <section className="py-16">
-      <div className="container mx-auto px-4">
+    <section id="leaderboard" className="py-16">
+      <div className="container mx-auto px-4 animate-fade-in">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold gradient-text mb-4">
+          <h2 className="text-4xl font-bold gradient-text mb-4 animate-slide-up">
             Live Leaderboard
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: '0.2s' }}>
             Track the competition as influencers battle for the ultimate Thailand getaway. 
             Rankings update in real-time based on total video views.
           </p>
@@ -120,10 +120,11 @@ export const Leaderboard = () => {
               <Card 
                 key={influencer.id}
                 className={cn(
-                  "p-6 bg-gradient-card border transition-all duration-300 hover:scale-[1.02]",
+                  "p-6 bg-gradient-card border transition-all duration-300 hover:scale-[1.02] animate-slide-up",
                   isTop3 && "border-primary/40 shadow-glow",
                   position === 1 && "bg-gradient-thailand border-accent/60 shadow-thailand"
                 )}
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="flex items-center gap-6">
                   {/* Rank */}
@@ -134,7 +135,7 @@ export const Leaderboard = () => {
                   {/* Avatar */}
                   <div className="relative">
                     <div className={cn(
-                      "w-14 h-14 rounded-full flex items-center justify-center text-lg font-bold",
+                      "w-14 h-14 rounded-full flex items-center justify-center text-lg font-bold transition-transform duration-300 hover:scale-110",
                       position === 1 ? "bg-gradient-thailand text-accent-foreground" :
                       position === 2 ? "bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground" :
                       position === 3 ? "bg-gradient-primary text-primary-foreground" :
@@ -143,7 +144,7 @@ export const Leaderboard = () => {
                       {influencer.avatar}
                     </div>
                     {influencer.verified && (
-                      <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-primary flex items-center justify-center">
+                      <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-primary flex items-center justify-center animate-bounce-in">
                         <Crown className="w-3 h-3 text-primary-foreground" />
                       </div>
                     )}
@@ -154,7 +155,7 @@ export const Leaderboard = () => {
                     <div className="flex items-center gap-2 mb-1">
                       <h3 className="font-semibold text-lg">{influencer.name}</h3>
                       {isTop3 && (
-                        <Badge variant="outline" className="border-primary text-primary">
+                        <Badge variant="outline" className="border-primary text-primary animate-glow-pulse">
                           Top {position}
                         </Badge>
                       )}
@@ -164,24 +165,24 @@ export const Leaderboard = () => {
 
                   {/* Stats */}
                   <div className="hidden md:flex items-center gap-8">
-                    <div className="text-center">
-                      <div className="flex items-center gap-1 text-sm text-muted-foreground mb-1">
+                    <div className="text-center group">
+                      <div className="flex items-center gap-1 text-sm text-muted-foreground mb-1 group-hover:text-primary transition-colors">
                         <Eye className="w-4 h-4" />
                         Views
                       </div>
                       <div className="font-bold text-lg">{formatNumber(influencer.views)}</div>
                     </div>
                     
-                    <div className="text-center">
-                      <div className="flex items-center gap-1 text-sm text-muted-foreground mb-1">
+                    <div className="text-center group">
+                      <div className="flex items-center gap-1 text-sm text-muted-foreground mb-1 group-hover:text-primary transition-colors">
                         <Heart className="w-4 h-4" />
                         Likes
                       </div>
                       <div className="font-semibold">{formatNumber(influencer.likes)}</div>
                     </div>
                     
-                    <div className="text-center">
-                      <div className="flex items-center gap-1 text-sm text-muted-foreground mb-1">
+                    <div className="text-center group">
+                      <div className="flex items-center gap-1 text-sm text-muted-foreground mb-1 group-hover:text-primary transition-colors">
                         <Share2 className="w-4 h-4" />
                         Shares
                       </div>
@@ -195,7 +196,7 @@ export const Leaderboard = () => {
                       <TrendingUp className="w-4 h-4" />
                       Growth
                     </div>
-                    <div className="font-bold text-primary">+{influencer.growth}%</div>
+                    <div className="font-bold text-primary animate-glow-pulse">+{influencer.growth}%</div>
                   </div>
                 </div>
 
