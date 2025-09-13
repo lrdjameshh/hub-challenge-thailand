@@ -1,12 +1,35 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from "react";
+import { InviteGate } from "@/components/InviteGate";
+import { ChallengeHero } from "@/components/ChallengeHero";
+import { Leaderboard } from "@/components/Leaderboard";
+import { ChallengeRules } from "@/components/ChallengeRules";
 
 const Index = () => {
+  const [isVerified, setIsVerified] = useState(false);
+
+  // Show invite gate if not verified
+  if (!isVerified) {
+    return <InviteGate onVerified={() => setIsVerified(true)} />;
+  }
+
+  // Show main challenge content after verification
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen">
+      <ChallengeHero />
+      <Leaderboard />
+      <ChallengeRules />
+      
+      {/* Footer */}
+      <footer className="py-12 border-t border-border/50">
+        <div className="container mx-auto px-4 text-center">
+          <p className="text-muted-foreground">
+            © 2024 HungryHub Singapore. All rights reserved.
+          </p>
+          <p className="text-sm text-muted-foreground/70 mt-2">
+            Challenge terms and conditions apply. Winner selection is final.
+          </p>
+        </div>
+      </footer>
     </div>
   );
 };
